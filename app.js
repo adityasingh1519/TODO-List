@@ -7,18 +7,18 @@ function togglePopup() {
   }
 }
 
-
 function toggleArchivePopup() {
+  const archivePopup = document.getElementById("archivePopup");
+  if (
+    archivePopup.style.display === "none" ||
+    archivePopup.style.display === ""
+  ) {
+    archivePopup.style.display = "block";
+  } else {
+    archivePopup.style.display = "none";
+  }
 
-    const archivePopup = document.getElementById("archivePopup");
-    if (archivePopup.style.display === "none" || archivePopup.style.display === "") {
-        archivePopup.style.display = "block";
-    } else {
-        archivePopup.style.display = "none";
-    }
-
-    viewArchivePopup();
-
+  viewArchivePopup();
 }
 
 function addTask() {
@@ -59,35 +59,6 @@ let todoList = [
 
 renderTodoList();
 
-function renderTodoList() {
-  const htmlTemplate = `
-   
-  ${todoList
-    .map((task) => {
-      if (task.archive !== true ) {
-        return `
-          <div class="card">
-            <div class="card-header">
-              <input type="text" name="taskName" placeholder="Task name" value="${task.taskTitle}">
-            </div>
-            <input type="text" name="taskDescription" placeholder="Task description" value="${task.taskDescription}">
-            <div class="card-footer ms-auto">
-              <button class="btn btn-success text-light" type="submit">Done</button>
-              <button onClick="archiveById(${task.id})" class="btn btn-alert text-light" type="submit">Archive</button>
-              <button onClick="deleteTaskById(${task.id})" class="btn btn-danger text-light" type="submit">Delete</button>
-            </div>
-          </div>
-        `;
-      }
-    })
-    .join('')}
-`;
-
-  const containerElement = document.querySelector(".container.task-body");
-
-  containerElement.innerHTML = htmlTemplate;
-}
-
 function deleteTaskById(taskId) {
   let taskIndex = todoList.findIndex((task) => task.id === taskId);
 
@@ -101,39 +72,36 @@ function deleteTaskById(taskId) {
 }
 
 function archiveById(taskId) {
-   
-    const taskToArchive = todoList.find(task => task.id === taskId);
-   
-    if (taskToArchive) {
-      taskToArchive.archive = true;
-    } else {
-      console.log(`Task with ID ${taskId} not found.`);
-    }
+  const taskToArchive = todoList.find((task) => task.id === taskId);
 
-    renderTodoList();
+  if (taskToArchive) {
+    taskToArchive.archive = true;
+  } else {
+    console.log(`Task with ID ${taskId} not found.`);
   }
 
-  function restoreById(taskId) {
-   
-    const taskToArchive = todoList.find(task => task.id === taskId);
-   
-    if (taskToArchive) {
-      taskToArchive.archive = false;
-    } else {
-      console.log(`Task with ID ${taskId} not found.`);
-    }
+  renderTodoList();
+}
 
-   toggleArchivePopup();
-    renderTodoList();
+function restoreById(taskId) {
+  const taskToArchive = todoList.find((task) => task.id === taskId);
+
+  if (taskToArchive) {
+    taskToArchive.archive = false;
+  } else {
+    console.log(`Task with ID ${taskId} not found.`);
   }
+
+  toggleArchivePopup();
+  renderTodoList();
+}
 
 function viewArchivePopup() {
-
-    const htmlTemplate = `
+  const htmlTemplate = `
    
     ${todoList
       .map((task) => {
-        if (task.archive == true ) {
+        if (task.archive == true) {
           return `
             <div class="card">
               <div class="card-header">
@@ -149,48 +117,53 @@ function viewArchivePopup() {
           `;
         }
       })
-      .join('')}
+      .join("")}
   `;
-  
-    const containerElement = document.querySelector(".archive");
-  
-    containerElement.innerHTML = htmlTemplate;
 
+  const containerElement = document.querySelector(".archive");
 
+  containerElement.innerHTML = htmlTemplate;
+}
 
-  }
+const searchInput = document.getElementById("searchInput");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const searchInput = document.getElementById('searchInput');
-
-
-searchInput.addEventListener('input', handleSearch);
-
+searchInput.addEventListener("input", handleSearch);
 
 function handleSearch() {
+  const searchQuery = searchInput.value.toLowerCase();
 
-    const searchQuery = searchInput.value.toLowerCase(); 
-  
-    const filteredTasks = todoList.filter((task) => {
-      const taskTitle = task.taskTitle.toLowerCase();
-      return taskTitle.includes(searchQuery);
-    });
-  
-    renderFilteredTodoList(filteredTasks);
-  }
-  
+  const filteredTasks = todoList.filter((task) => {
+    const taskTitle = task.taskTitle.toLowerCase();
+    return taskTitle.includes(searchQuery);
+  });
+
+  renderTodoList(filteredTasks);
+}
+
+function renderTodoList(tasks = todoList) {
+  const htmlTemplate = `
+      ${tasks
+        .map((task) => {
+          if (task.archive !== true) {
+            return `
+              <div class="card">
+                <div class="card-header">
+                  <input type="text" name="taskName" placeholder="Task name" value="${task.taskTitle}">
+                </div>
+                <input type="text" name="taskDescription" placeholder="Task description" value="${task.taskDescription}">
+                <div class="card-footer ms-auto">
+                  <button onClick="doneById(${task.id})" class="btn btn-success text-light" type="submit">Done</button>
+                  <button onClick="archiveById(${task.id})" class="btn btn-alert text-light" type="submit">Archive</button>
+                  <button onClick="deleteTaskById(${task.id})" class="btn btn-danger text-light" type="submit">Delete</button>
+                </div>
+              </div>
+            `;
+          }
+        })
+        .join("")}
+    `;
+
+  const containerElement = document.querySelector(".container.task-body");
+
+  containerElement.innerHTML = htmlTemplate;
+}

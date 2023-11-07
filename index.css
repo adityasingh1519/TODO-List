@@ -1,0 +1,64 @@
+
+:root {
+    --clr-bg: hsl(240, 49%, 7%);
+    --clr-primary-050: hsl(217, 82%, 77%);
+    --clr-primary-100: hsl(217, 98%, 66%);
+    --clr-primary-200: hsl(224, 97%, 49%);
+
+
+    --bg-success: rgb(33, 164, 33);
+
+
+    --zero-px: 0px;
+ 
+  
+    --card-bg: #5a5950;
+  
+    --font-family: "Roboto", sans-serif;
+  
+    --h1-font-size: 70px;
+   
+    --font-weight-700: 700;
+
+    --border-radius: 8px;
+
+
+    --padding-10: 10px;
+
+  
+    --btn-font: 18px;
+    --btn-line-height: 27px;
+    --btn-padding: 7px 14px;
+    --btn-radius: 5px;
+  }
+  
+
+
+
+
+/*   laptop responsive      */
+@media only screen and (min-width: 1023px) and (max-width: 1599px) {
+    :root {
+      --h1-font-size: 40px;
+   
+    }
+  }
+  
+  /*    tablet responsive      */
+  @media only screen and (min-width: 768px) and (max-width: 1022px) {
+    :root {
+      --h1-font-size: 30px;
+    
+    }
+  }
+  
+  /*     mobile responsive      */
+  @media only screen and (min-width: 320px) and (max-width: 767px) {
+    :root {
+      --h1-font-size: 26px;
+  
+ 
+
+    }
+  }
+  
