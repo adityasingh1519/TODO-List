@@ -28,7 +28,7 @@ body {
 }
 
 .bg-success{
-  background-color: var(--bg-success);
+  background-color: var(--bg-success) !important;
 }
 
 .text-primary {

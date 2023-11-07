@@ -146,7 +146,7 @@ function renderTodoList(tasks = todoList) {
         .map((task) => {
           if (task.archive !== true) {
             return `
-              <div class="card">
+              <div class="card task-card-${task.id}">
                 <div class="card-header">
                   <input type="text" name="taskName" placeholder="Task name" value="${task.taskTitle}">
                 </div>
@@ -167,3 +167,14 @@ function renderTodoList(tasks = todoList) {
 
   containerElement.innerHTML = htmlTemplate;
 }
+
+
+
+
+function doneById(taskId) {
+   
+    const cardElement = document.querySelector(`.task-card-${taskId}`);
+    if (cardElement) {
+      cardElement.classList.add('bg-success'); 
+    }
+  }
