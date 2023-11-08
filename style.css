@@ -1,8 +1,9 @@
-
 * {
   padding: var(--zero-px);
   margin: var(--zero-px);
+  overflow: hidden;
 }
+
 
 body {
   font-family: var(--font-family);
@@ -10,25 +11,15 @@ body {
 
 .container {
   width: 80vw;
-  margin: 30px auto 0;
 }
 
-.task-body {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+h1 {
+  font-size: var(--h1-font-size);
+  font-weight: var(--font-weight-700);
 }
 
 .text-center {
   text-align: center;
-}
-
-.bg-dark {
-  background-color: var(--clr-bg);
-}
-
-.bg-success{
-  background-color: var(--bg-success) !important;
 }
 
 .text-primary {
@@ -36,11 +27,27 @@ body {
 }
 
 .text-light {
-  color: white;
+  color: var(--light);
 }
 
 .text-dark {
-  color: black;
+  color: var(--dark);
+}
+
+.bg-dark {
+  background-color: var(--clr-bg);
+}
+
+.bg-success {
+  background-color: var(--bg-success) !important;
+}
+
+.task-body {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  
+  
 }
 
 .btn {
@@ -48,7 +55,7 @@ body {
   line-height: var(--body-line-height);
   padding: var(--btn-padding);
   border-radius: var(--btn-radius);
-  border: 0px;
+  border: var(--zero-px);
 }
 
 .btn-success {
@@ -56,16 +63,11 @@ body {
 }
 
 .btn-danger {
-  background-color: rgb(221, 29, 29);
+  background-color: var(--bg-danger);
 }
 
 .btn-alert {
-  background-color: rgb(185, 185, 57);
-}
-
-h1 {
-  font-size: var(--h1-font-size);
-  font-weight: var(--font-weight-700);
+  background-color: var(--bg-alert);
 }
 
 /*  spacing */
@@ -80,73 +82,59 @@ h1 {
   margin-bottom: auto;
 }
 
-.ms-auto {
-  margin-left: auto;
+.section-padding {
+  padding-top: 30px;
 }
 
-.d-flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.ms-auto {
+  margin-left: auto;
 }
 
 .card {
   display: flex;
   flex-direction: column;
-  width: 350px;
+  width: 300px;
   border-radius: var(--border-radius);
-  background-color: white;
+  background-color: var(--light);
   padding: 10px;
   margin: 10px;
 }
 
 input[type="text"] {
   background-color: transparent;
-  color: #100f0f; 
-  border: none; 
-  outline: none; 
+  color: var(--dark);
+  border: none;
+  outline: none;
   font-size: 15px;
-  padding: 10px 0;
+  padding: var(--padding-10) var(--zero-px);
 }
 
-.content input[type="text"]  {
-
-  color: rgb(0, 0, 0);
-  background-color: aliceblue;
+.right-nav input[type="text"] {
+  color: var(--dark);
+  background-color: var(--light);
   border-radius: var(--border-radius);
-  padding: 10px;
+  font-size: var(--btn-font);
+  padding: var(--btn-padding)
 }
 
 .card-header input[type="text"] {
   font-size: var(--h4-font-size);
-  font-weight: 400;
+  font-weight: var(--font-weight-400);
   border-bottom: 3px solid var(--clr-primary-100);
-}
-
-a {
-  text-decoration: none;
-  color: white;
-}
-.nav-item {
-  margin: auto 5px;
 }
 
 .menu {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 60px;
-
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  color: white;
-  padding: 3px;
+  height: 80px;
+  color: var(--light);
 }
 
 .innerpopUp {
   position: absolute;
-  z-index: 9;
-  background-color: rgba(0, 0, 0, 0.522);
+  z-index: var(--z-index);
+  background-color: rgba(0, 0, 0, 0.61);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -160,11 +148,11 @@ a {
 
 .archive {
   position: absolute;
-  z-index: 9;
-  background-color: transparent;
+  z-index: var(--z-index);
+  background-color: rgba(0, 0, 0, 0.716);
   display: flex;
   flex-direction: column;
-  right: 0%;
+  right: 3%;
   top: 90px;
 }
 
@@ -178,20 +166,38 @@ a {
 
 /*   laptop responsive      */
 @media only screen and (min-width: 1023px) and (max-width: 1599px) {
- 
 }
 
 /*    tablet responsive      */
 @media only screen and (min-width: 768px) and (max-width: 1022px) {
-  
+  .container {
+    width: 90vw;
+   
+  }
+
+
 }
 
 /*     mobile responsive      */
 @media only screen and (min-width: 320px) and (max-width: 767px) {
-
   .container {
-    width: 100vw;
-    margin: 30px auto 0;
+    width: 95vw;
   }
- 
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .right-nav {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+ .archive .card {
+  width: 260px;
+ }
+
 }

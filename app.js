@@ -1,3 +1,4 @@
+
 function togglePopup() {
   const popup = document.getElementById("popup");
   if (popup.style.display === "none" || popup.style.display === "") {
@@ -50,6 +51,27 @@ function addTask() {
 let todoList = [
   {
     id: 1,
+    taskTitle: "Sample Task ",
+    taskDescription: " Sample Description for Task ",
+    complete: false,
+    archive: false,
+  },
+  {
+    id: 2,
+    taskTitle: "Sample Task ",
+    taskDescription: " Sample Description for Task ",
+    complete: false,
+    archive: false,
+  },
+  {
+    id: 3,
+    taskTitle: "Sample Task ",
+    taskDescription: " Sample Description for Task ",
+    complete: false,
+    archive: false,
+  },
+  {
+    id: 4,
     taskTitle: "Sample Task ",
     taskDescription: " Sample Description for Task ",
     complete: false,
@@ -163,7 +185,7 @@ function renderTodoList(tasks = todoList) {
         .join("")}
     `;
 
-  const containerElement = document.querySelector(".container.task-body");
+  const containerElement = document.querySelector(".task-body");
 
   containerElement.innerHTML = htmlTemplate;
 }

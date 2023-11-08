@@ -8,6 +8,13 @@
 
     --bg-success: rgb(33, 164, 33);
 
+    --bg-danger: rgb(186, 39, 39);
+
+    --bg-alert: rgb(169, 169, 55);
+
+    --light: white;
+    --dark: black;
+
 
     --zero-px: 0px;
  
@@ -24,15 +31,17 @@
 
 
     --padding-10: 10px;
+    --margin-10: 10px;
 
   
     --btn-font: 18px;
     --btn-line-height: 27px;
     --btn-padding: 7px 14px;
     --btn-radius: 5px;
+
+    --z-index: 9;
   }
   
-
 
 
 
@@ -48,6 +57,9 @@
   @media only screen and (min-width: 768px) and (max-width: 1022px) {
     :root {
       --h1-font-size: 30px;
+
+      --btn-font: 12px;
+      --btn-line-height: 20px;
     
     }
   }
@@ -56,6 +68,9 @@
   @media only screen and (min-width: 320px) and (max-width: 767px) {
     :root {
       --h1-font-size: 26px;
+
+      --btn-font: 10px;
+      --btn-line-height: 18px;
   
  
 
