@@ -1,36 +1,17 @@
-
-function togglePopup() {
-  const popup = document.getElementById("popup");
-  if (popup.style.display === "none" || popup.style.display === "") {
-    popup.style.display = "block";
-  } else {
-    popup.style.display = "none";
-  }
-}
-
-function toggleArchivePopup() {
-  const archivePopup = document.getElementById("archivePopup");
-  if (
-    archivePopup.style.display === "none" ||
-    archivePopup.style.display === ""
-  ) {
-    archivePopup.style.display = "block";
-  } else {
-    archivePopup.style.display = "none";
-  }
-
-  viewArchivePopup();
-}
+// (()=>{
+const popup = document.getElementById("popup");
+const $taskTitleInput = document.getElementById("taskname");
+const $taskDescriptionInput = document.getElementById("taskdescription");
+const archivePopup = document.getElementById("archivePopup");
 
 function addTask() {
-  const taskTitleInput = document.getElementById("taskname").value;
-  const taskDescriptionInput = document.getElementById("taskdescription").value;
+  const taskTitleInput = $taskTitleInput.value;
+  const taskDescriptionInput = $taskDescriptionInput.value;
 
   if (taskTitleInput.trim() === "") {
     alert("Task name cannot be empty.");
     return;
   }
-
   const newTask = {
     id: todoList.length + 1,
     taskTitle: taskTitleInput,
@@ -41,8 +22,8 @@ function addTask() {
 
   todoList.push(newTask);
 
-  document.getElementById("taskname").value = "";
-  document.getElementById("taskdescription").value = "";
+  $taskTitleInput.value = "";
+  $taskDescriptionInput.value = "";
 
   togglePopup();
   renderTodoList();
@@ -123,7 +104,7 @@ function viewArchivePopup() {
    
     ${todoList
       .map((task) => {
-        if (task.archive == true) {
+        if (task.archive) {
           return `
             <div class="card">
               <div class="card-header">
@@ -146,8 +127,6 @@ function viewArchivePopup() {
 
   containerElement.innerHTML = htmlTemplate;
 }
-
-const searchInput = document.getElementById("searchInput");
 
 searchInput.addEventListener("input", handleSearch);
 
@@ -190,13 +169,63 @@ function renderTodoList(tasks = todoList) {
   containerElement.innerHTML = htmlTemplate;
 }
 
-
-
-
 function doneById(taskId) {
-   
-    const cardElement = document.querySelector(`.task-card-${taskId}`);
-    if (cardElement) {
-      cardElement.classList.add('bg-success'); 
-    }
+  const cardElement = document.querySelector(`.task-card-${taskId}`);
+  if (cardElement) {
+    cardElement.classList.add("bg-success");
   }
+}
+
+// togle
+function togglePopupGen(popupElm) {
+  if (popupElm.style.display === "none" || popupElm.style.display === "") {
+    return (popupElm.style.display = "block");
+  }
+  popupElm.style.display = "none";
+}
+
+
+function togglePopup() {
+  togglePopupGen(popup);
+  // if (popup.style.display === "none" || popup.style.display === "") {
+  //   return popup.style.display = "block";
+  // }
+  // popup.style.display = "none";
+}
+
+function toggleArchivePopup() {
+  togglePopupGen(archivePopup);
+
+  // if ( archivePopup.style.display === "none" || archivePopup.style.display === "") {
+  //   return archivePopup.style.display = "block";
+  // } else {
+  //   archivePopup.style.display = "none";
+  // }
+
+  viewArchivePopup();
+}
+
+// module.exports = {
+//   sum,
+//   todoList,
+//   addTask,
+//   deleteTaskById,
+//   archiveById,
+//   restoreById,
+//   viewArchivePopup,
+//   handleSearch,
+//   renderTodoList,
+//   doneById,
+//   togglePopup,
+//   toggleArchivePopup,
+// };
+
+// module.exports = {  sum,todoList,addTask}
+
+setTimeout(() => {
+  console.log("p");
+
+  renderTodoList();
+}, 4000);
+
+// }) ();

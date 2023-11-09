@@ -2,16 +2,17 @@
 <html lang="en">
 
 <head>
-    <title>Title</title>
-    <!-- Required meta tags -->
+    <title>TODO List</title>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-
+    <!-- google font  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-
+     
+    <!-- css -->
 
     <link rel="stylesheet" href="./index.css">
     <link rel="stylesheet" href="./style.css">
@@ -20,10 +21,6 @@
 </head>
 
 <body class="bg-dark">
-    <header>
-        
-
-    </header>
     <main>
         <div class="menu container mx-auto">
             <div class="left-nav my-auto">
@@ -31,28 +28,30 @@
 
             </div>
             <div class="right-nav my-auto">
-              
+
                 <input id="searchInput" type="text" placeholder="Search tasks...">
 
                 <button onclick="toggleArchivePopup()" class="btn btn-success  text-light" type="submit"> view
                     Archive </button>
                 <button onclick="togglePopup()" class="btn btn-success  text-light" type="submit">Add </button>
 
+                <!-- using event listner insted of onClick methods -->
+
             </div>
         </div>
 
 
-       <div class="main-body container section-padding  mx-auto">
-        <div class="task-body">
+        <div class="main-body container section-padding  mx-auto">
+            <div class="task-body">
 
 
+            </div>
         </div>
-       </div>
-       
 
 
 
-        <div id="popup">
+
+        <div id="popup" class="popup">
             <div class="innerpopUp">
                 <div class="card">
                     <div class="card-header">
@@ -73,9 +72,9 @@
         </div>
 
 
-        <div id="archivePopup">
+        <div id="archivePopup" class="archivePopup">
             <div class="archive">
-               
+
 
 
             </div>
@@ -91,10 +90,7 @@
 
     </footer>
 
-    <script src="./app.js"></script>
-
-    
-
+    <script  src="./app.js"></script>
 
 </body>
 

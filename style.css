@@ -156,11 +156,11 @@ input[type="text"] {
   top: 90px;
 }
 
-#popup {
+.archivePopup {
   display: none;
 }
 
-#archivePopup {
+.popup {
   display: none;
 }
 
