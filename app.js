@@ -1,8 +1,15 @@
 // (()=>{
+
+document.addEventListener("DOMContentLoaded", function() {
+
+
+
 const popup = document.getElementById("popup");
 const $taskTitleInput = document.getElementById("taskname");
 const $taskDescriptionInput = document.getElementById("taskdescription");
 const archivePopup = document.getElementById("archivePopup");
+const containerElement = document.querySelector(".task-body");
+
 
 function addTask() {
   const taskTitleInput = $taskTitleInput.value;
@@ -28,6 +35,12 @@ function addTask() {
   togglePopup();
   renderTodoList();
 }
+
+function add(a, b) {
+  return a + b;
+}
+
+
 
 let todoList = [
   {
@@ -164,7 +177,6 @@ function renderTodoList(tasks = todoList) {
         .join("")}
     `;
 
-  const containerElement = document.querySelector(".task-body");
 
   containerElement.innerHTML = htmlTemplate;
 }
@@ -187,23 +199,27 @@ function togglePopupGen(popupElm) {
 
 function togglePopup() {
   togglePopupGen(popup);
-  // if (popup.style.display === "none" || popup.style.display === "") {
-  //   return popup.style.display = "block";
-  // }
-  // popup.style.display = "none";
 }
 
 function toggleArchivePopup() {
   togglePopupGen(archivePopup);
 
-  // if ( archivePopup.style.display === "none" || archivePopup.style.display === "") {
-  //   return archivePopup.style.display = "block";
-  // } else {
-  //   archivePopup.style.display = "none";
-  // }
-
   viewArchivePopup();
 }
+
+
+// setTimeout(() => {
+
+//   renderTodoList();
+// }, 1000);
+
+
+
+
+
+
+
+
 
 // module.exports = {
 //   sum,
@@ -220,12 +236,14 @@ function toggleArchivePopup() {
 //   toggleArchivePopup,
 // };
 
-// module.exports = {  sum,todoList,addTask}
 
-setTimeout(() => {
-  console.log("p");
+module.exports = {add,todoList};
 
-  renderTodoList();
-}, 4000);
+
 
 // }) ();
+  
+});
+
+
+
